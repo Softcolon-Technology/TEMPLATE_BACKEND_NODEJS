@@ -4,6 +4,7 @@ This is template for nodejs backend
 
 # Requirements
 
+- this code in web 3 and queue releted thing is not working
 - Node Version Greater than 14.0.0
 - Eslint configured in your editor
 

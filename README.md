@@ -4,8 +4,9 @@ This is template for nodejs backend
 
 # Requirements
 
-- this code in web 3 and queue releted thing is not working
+- this code in web 3 and queue releted thing
 - Node Version Greater than 14.0.0
+- Docker Version 3 and higher
 - Eslint configured in your editor
 
 NOTE: The package type of this repo is module means the code is as per ESM format. You cannot use require statements, Instead import and export are used. Please go through ESM docs for more info.
@@ -43,6 +44,8 @@ Details of folders are as follows:-
 
 ## BACKEND SETUP
 
+- Update your docker-compose to latest version, For that a script is there to help you. Run the update_docker.sh bash script(It will do all work for you!)
+
 - .env file is important and should be setup for successfull run of the application. The env-example file is there which contains which fields you have to set. The required one's are PROJECT_NAME, RPC_API and API_KEY. PROJECT_NAME is must as docker containers will be named on this mentioned name and at many other places it is used
 
 - Setup eslint in your editor so that code can be auto formatted when you save any file. For vscode you can refer this [blog](https://daveceddia.com/vscode-use-eslintrc/#:~:text=Configure%20VSCode%20Settings%20to%20use%20ESLint%20for%20Formatting&text=Click%20that%20tiny%20icon%20in,paper%20with%20a%20little%20arrow.&text=The%20first%20one%20turns%20on,it%2C%20we're%20done.)
@@ -52,6 +55,20 @@ Please note there are two separate .env required one inside hardhat folder and o
 # Running instructions
 
 Provide PORT in .env. If not provided server will run at port 3000
+
+## Using Docker
+
+### On Development
+
+- To build `docker-compose -f docker-compose.dev.yaml build`
+- To build and run `docker-compose -f docker-compose.dev.yaml up`
+- To rebuild and run `docker-compose -f docker-compose.dev.yaml up --build`
+
+### On Production
+
+- To build `docker-compose -f docker-compose.prod.yaml build`
+- To build and run `docker-compose -f docker-compose.prod.yaml up`
+- To rebuild and run `docker-compose -f docker-compose.prod.yaml up --build`
 
 ### Running without docker
 

@@ -8,16 +8,7 @@ services:
     env_file: 
       - ./.env 
     ports:
-      - "27017:27017"
-
-  rabbitmq:
-    image: "rabbitmq:3.8"
-    container_name: ${PROJECT_NAME}_rabbitmq
-    restart: always
-    env_file: 
-      - ./.env
-    ports: 
-      - "5672:5672"  
+      - "27017:27017"  
 
   server:
     build:
@@ -28,7 +19,6 @@ services:
     container_name: ${PROJECT_NAME:?Please provide project name in env file}_server #throw error if project name not provide in .env
     depends_on:
       - mongodb
-      - rabbitmq  
     restart: always
     volumes:
       - ./docker-logs:/app/logs #bind mount to watch logs locally
@@ -36,8 +26,7 @@ services:
       - ./:/app # Bind mount to put changes without rebuilding the image
     env_file: 
       - ./.env
-    environment:
-      - RMQ_CONN_URL=amqp://rabbitmq:5672
+    environment:      
       - MONGO_URI=mongodb://mongodb:27017/${PROJECT_NAME}
     ports:
       - "${PORT:-3000}:${PORT:-3000}"  #Fetch from .env or default to 3000

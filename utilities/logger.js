@@ -8,6 +8,7 @@ import "winston-daily-rotate-file";
 const { printf, timestamp, combine } = format;
 
 const myFormat = printf(({ level, message, timestamp, exception, meta }) => {
+
   // return `${timestamp} Exception: ${exception} Level: ${level}: ${message}`
   if (exception) {
     return JSON.stringify({

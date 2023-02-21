@@ -12,8 +12,6 @@ export async function shutDown(onError = false) {
   );
   console.log("Closing http server.");
   server.close(async () => {
-    console.log("Closing Queue Connection.");
-    if (queue) await queue.close();
     console.log("Closing Database Connection.");
     // boolean means [force], see in mongoose doc
     database.close(false, () => {

@@ -16,4 +16,4 @@ EXPOSE $PORT
 # CMD ["npm","run","dev"] 
 
 # Uncomment below line if waiting is  needed(If Rabitmq  used)
-CMD ["sh","-c", "./wait_for_services.sh && npm start"]
+CMD ["sh","-c", "npm start"]

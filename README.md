@@ -4,7 +4,6 @@ This is template for nodejs backend
 
 # Requirements
 
-- this code in web 3 and queue releted thing
 - Node Version Greater than 14.0.0
 - Docker Version 3 and higher
 - Eslint configured in your editor
@@ -17,7 +16,7 @@ A quick [blog](https://blog.logrocket.com/commonjs-vs-es-modules-node-js/#:~:tex
 
 The code structure is made in moduler way and follows MVC architecture.
 
-<img src="assets/mvc.png" style="width:60%" />
+<img src="./assets/mvc.png" style="width:60%" />
 <br>
 Details of folders are as follows:-
 
@@ -46,7 +45,7 @@ Details of folders are as follows:-
 
 - Update your docker-compose to latest version, For that a script is there to help you. Run the update_docker.sh bash script(It will do all work for you!)
 
-- .env file is important and should be setup for successfull run of the application. The env-example file is there which contains which fields you have to set. The required one's are PROJECT_NAME, RPC_API and API_KEY. PROJECT_NAME is must as docker containers will be named on this mentioned name and at many other places it is used
+- .env file is important and should be setup for successFull run of the application. The env-example file is there which contains which fields you have to set. The required one's are PROJECT_NAME, RPC_API and API_KEY. PROJECT_NAME is must as docker containers will be named on this mentioned name and at many other places it is used
 
 - Setup eslint in your editor so that code can be auto formatted when you save any file. For vscode you can refer this [blog](https://daveceddia.com/vscode-use-eslintrc/#:~:text=Configure%20VSCode%20Settings%20to%20use%20ESLint%20for%20Formatting&text=Click%20that%20tiny%20icon%20in,paper%20with%20a%20little%20arrow.&text=The%20first%20one%20turns%20on,it%2C%20we're%20done.)
 
@@ -83,7 +82,7 @@ Provide PORT in .env. If not provided server will run at port 3000
 
 - Health check endpoint is added which will tell you health of server and which services are working fine. You can easily add more services for check by just simply adding it in healthCheck.js file
 
-<img src="assets/healthcheck.png" style="width:60%" />
+<img src="./assets/healthcheck.pngs" style="width:60%" />
 
 - Ratelimitter middleware is added to restrict unlimited calls to server from a particular client. Currently it is set for all routes and restriction is 1000 calls per hour. You can modify it as per your requirements
 

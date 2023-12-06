@@ -7,7 +7,12 @@
 import app from "../app.js";
 import debugMessage from "debug";
 import http from "http";
+import { instrument } from "@socket.io/admin-ui";
+import { Server } from "socket.io";
 import { shutDown } from "../utilities/serverUtils/shutDown.js";
+import config from "../config/index.js";
+import { setIoObject } from "../socket/socket_server.js";
+import { socketConnection } from "../socket/socket_client.js";
 
 const debug = debugMessage("planetx-blockchain-dgt-backend:server");
 
@@ -77,6 +82,20 @@ function onError(error) {
       throw error;
   }
 }
+
+const io = new Server(config.PROJECT_LEVEL === "STAGE" ? httpsServer : server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+instrument(io, {
+  auth: false,
+  mode: "development",
+});
+
+await setIoObject(io); // Start WS/WSS Server
+await socketConnection(); // Start As and Client
 
 /**
  * Event listener for HTTP server "listening" event.

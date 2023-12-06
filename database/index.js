@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import logger from "../utilities/logger.js";
 import config from "../config/index.js";
 import { shutDown } from "../utilities/serverUtils/shutDown.js";
+import { createMainAdmin } from "../controllers/adminController.js";
 
 mongoose.connect(config.DATABASE.MONGO.URI, {
   useNewUrlParser: true,
@@ -16,9 +17,11 @@ db.on("connecting", () => {
   logger.info({ message: "MongoDB Connecting" });
 });
 
-db.once("open", () => {
+db.once("open", async() => {
   console.log("MONGO-DB DATABASE CONNECTED");
+  await createMainAdmin()
   logger.info({ message: "MongoDB connected" });
+
 });
 
 db.on("disconnecting", () => {
